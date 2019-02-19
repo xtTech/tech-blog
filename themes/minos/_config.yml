@@ -44,9 +44,15 @@ share:
 
 # Comment plugin settings.
 comment:
-  type: changyan
-  appid: cyu3Jx29G
-  conf: prod_06c2594c82d59106d5a9378c1d2b36f1
+  # type: changyan
+  # appid: cyu3Jx29G
+  # conf: prod_06c2594c82d59106d5a9378c1d2b36f1
+  type: valine
+  app_id: rzHYV4kwKloAkmr60Ia200JH-9Nh9j0Va        # (required) LeanCloud application id
+  app_key: 6P7MwRG9tEFrtsKlai2gHnM0       # (required) LeanCloud application key
+  notify: false           # (optional) receive email notification
+  verify: false           # (optional) show verification code
+  placeholder: 来，说点什么吧~
 
 # Other plugins and their settings.
 plugins:
