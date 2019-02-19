@@ -44,8 +44,9 @@ share:
 
 # Comment plugin settings.
 comment:
-  type: disqus
-  shortname: tech-trc-com
+  type: changyan
+  appid: cyu3Jx29G
+  conf: prod_06c2594c82d59106d5a9378c1d2b36f1
 
 # Other plugins and their settings.
 plugins:
