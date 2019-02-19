@@ -1,7 +1,7 @@
 ---
 title: HBase 2.0 协处理器实现 ES 数据同步
 tags: tech
-date: 2019-01-30
+date: 2019-01-31
 comments: true
 ---
 
@@ -511,6 +511,15 @@ Anyway，这两种方案都需要解决历史数据的问题和还有需要注�
 - 发现已经更新包，协处理器还是在执行历史代码？
 
   当更新包的时候，要进行包名的变更，否则，可能会出现类似于缓存的现象问题。
+
+- HDFS NameNode 存在多节点的场景，那么怎么保证动态切换呢？
+
+  在 `coprocessor` 参数下不使用 `hdfs url`
+
+  ```
+  /apps/hbase/hbase-observer-simple-example-v2.jar|com.tairanchina.csp.dmp.examples.HbaseDataSyncEsObserver|1073741823
+  ```
+
 
 ### 待确认
 
