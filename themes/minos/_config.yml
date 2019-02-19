@@ -24,7 +24,10 @@ article:
 # Navigation bar menu links.
 menu:
   首页: /
-  历史: /archives
+  架构: /categories/架构
+  云计算: /categories/云计算
+  数据运维: /categories/数据运维
+  编程语言: /categories/编程语言
   # Lifestyle: /categories/LifeStyle
   # Music: /categories/Music
   # Technology: /categories/Technology
