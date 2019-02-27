@@ -1,6 +1,7 @@
 #!/bin/sh
 git add -A
-m = `date +%Y.%m.%d.%k:%M`
+message=`date "+%Y%m%d %H:%M:%S"`
+git commit -m "\"$message\""
 git commit -m $m
 git push origin master
 if [ $? -eq 0 ]
