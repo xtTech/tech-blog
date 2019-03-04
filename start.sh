@@ -1,5 +1,5 @@
 #!/bin/sh
-git add -A
+git add .
 message=`date "+%Y%m%d %H:%M:%S"`
 git commit -m "\"$message\""
 git push origin master
