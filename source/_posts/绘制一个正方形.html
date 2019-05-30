@@ -32,7 +32,7 @@ comments: false
         style="width: 100%; overflow:hidden; display:block;" id="cp_embed_QRVgJX"></iframe></div>
 <script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
 <p></p>
-<p>虽然实现了效果，但是如果你需要的是固定值 px 来控制或者需要调整百分比大小，那么你在改变宽度的同时，还需要去定义 <code>padding</code> 值才能实现所谓的自适应。所以更好的方式是使用伪类的方式实现，如下节所述
+<p>虽然实现了效果，但是如果你需要的是固定值 px 来控制或者需要调整百分比大小，那么你在改变宽度的同时，还需要去定义 <code>padding</code> 值才能实现所谓的自适应。所以更好的办法是使用伪类的方式实现，如下节所述
 </p>
 <h3>2. :after</h3>
 <p>和 <code>padding/margin</code> 的原理一样，区别是我们可以直接使用伪类元素来撑开这个 div 实现正方形效果。</p>
@@ -62,7 +62,7 @@ comments: false
         onclick="alert('不提供反驳机会')">反驳点此</a>）。</p>
 <h2>writing-mode</h2>
 <p>那么我唯一能想到的 CSS 属性就是 <code>writing-mode</code>，<code>writing-mode</code> 大部分人都很陌生，寻常的网页开发基本看不见它。虽然它是一个非常古老的属性，在 IE7
-    时代就出现了，但它在很久以后才被各个浏览器厂商所支持。不过当你看到这篇文章的时候，你已经不需要过多考虑它的兼容性问题了。虽然它的实际效果可能会和你想要的不太一样<a href="#bug">#已知 BUG</a></p>
+    时代就出现了，但它在很久以后才被各个浏览器厂商所支持。不过当你看到这篇文章的时候，你已经不需要过多考虑它的兼容性问题了。虽然它的实际效果可能会和你想要的不太一样<a href="#bug">#注意事项</a></p>
 <h4>浏览器支持</h4>
 <p><img src="https://doofox.cn/wp-content/uploads/2019/05/2019053004434433033086999.jpg" alt="" width="1600"
         height="868" class="aligncenter size-full wp-image-69"></p>
@@ -86,7 +86,7 @@ comments: false
         style="width: 100%; overflow:hidden; display:block;" id="cp_embed_XwxYyy"></iframe></div>
 <script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
 <p></p>
-<h4 id="bug" style="color:red;">已知 BUG</h4>
+<h4 id="bug" style="color:red;">注意事项</h4>
 <p>在 Chrome 浏览器中，当我们改变窗体高度的时候，这个正方形大小不会按照我们预计的情况进行自适应调整，只有在调整宽度时候才会触发。不过在 Safari 中则不会有此问题。</p>
 <h2>逻辑属性</h2>
 <p>所谓CSS逻辑属性，指的是<code>*-start</code>、<code>*-end</code>以及<code>*-inline-start</code>、<code>*-inline-end</code>、<code>*-block-start</code>、<code>*-block-start</code>这类CSS属性，其元素最终的渲染方式是有逻辑性的，而
