@@ -1,6 +1,6 @@
 ---
 title: HBase 2.0 协处理器实现 ES 数据同步
-tags: 云计算
+tags: [云计算]
 categories: 云计算
 date: 2019-01-31
 comments: true

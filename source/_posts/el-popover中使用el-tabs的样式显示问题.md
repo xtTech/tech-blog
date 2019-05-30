@@ -1,6 +1,6 @@
 ---
 title: el-popover中使用el-tabs的样式显示问题
-tags: 前端、UI组件
+tags: [前端,UI组件]
 categories: 前端
 date: 2019-03-29
 comments: true

@@ -1,6 +1,6 @@
 ---
 title:  HDP Kerbreos 连接 HBase 登陆过期问题解析
-tags: 云计算
+tags: [云计算]
 categories: 云计算
 date: 2019-03-04
 comments: true
