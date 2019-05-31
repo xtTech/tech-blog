@@ -1,0 +1,105 @@
+---
+title: 绘制一个正方形
+tags: [CSS, writing-mode]
+categories: 前端
+date: 2019-05-30
+comments: false
+---
+
+<p>在有限条件下绘制一个正方形是很多前端开发者在页面开发时都会遇到的场景，<br>
+    通常会有两种情况，最常见的是<strong>已知宽度(%)</strong>，需要自适应高度、还有<strong>已知高度(%)</strong>，需要自适应宽度。<br>
+    前者是最为常见的，在<a
+        href="https://www.google.com/search?&amp;q=css+%E6%AD%A3%E6%96%B9%E5%BD%A2&amp;oq=css+%E6%AD%A3%E6%96%B9%E5%BD%A2"
+        rel="noopener noreferrer" target="_blank">网络上</a>几乎全部都是关于这一类的教程。<br>
+    后者情况比较少见，也是本文主要想讲述的内容。</p>
+<!-- more -->
+<h2>已知宽度</h2>
+<h3>1. padding/margin</h3>
+<p>在已知宽度的情况下（%），主要是利用：<br>
+    <strong>margin 和 padding 的 top 以及 bottom 是以包含当前元素的宽度为基准进行计算</strong><br>
+    规范来实现效果。<br>
+    <a href="https://drafts.csswg.org/css-box/#padding-physical" rel="noopener noreferrer" target="_blank">Page-relative
+        (Physical) Padding Properties</a></p>
+<p>例如使用 CSS 生成一个正方形头像框，已知宽度占据窗口宽度的 100%，如何让这个头像框永远是一个正方形。<br>
+    只要我们使用 <code>padding-bottom: 100%</code> 参数即可实现。</p>
+<p>当我们设置 <code>padding-bottom:100%</code> 时，实际的 div 高度为 <strong>height + width(padding-bottom:100% =
+        width:100%)</strong>，所以是一个长方形。我们只需设置 <code>height:0;</code> 即可让元素成为一个正方形</p>
+<h4>Demo</h4>
+<div class="cp_embed_wrapper"><iframe name="cp_embed_1"
+        src="https://codepen.io/hoythan/embed/QRVgJX?height=300&amp;theme-id=light&amp;slug-hash=QRVgJX&amp;default-tab=html%2Cresult&amp;animations=run&amp;editable=&amp;embed-version=2&amp;user=hoythan&amp;name=cp_embed_1"
+        scrolling="no" frameborder="0" height="300" allowtransparency="true" allowfullscreen="true"
+        allowpaymentrequest="true" title="CodePen Embed" class="cp_embed_iframe "
+        style="width: 100%; overflow:hidden; display:block;" id="cp_embed_QRVgJX"></iframe></div>
+<script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
+<p></p>
+<p>虽然实现了效果，但是如果你需要的是固定值 px 来控制或者需要调整百分比大小，那么你在改变宽度的同时，还需要去定义 <code>padding</code> 值才能实现所谓的自适应。所以更好的办法是使用伪类的方式实现，如下节所述
+</p>
+<h3>2. :after</h3>
+<p>和 <code>padding/margin</code> 的原理一样，区别是我们可以直接使用伪类元素来撑开这个 div 实现正方形效果。</p>
+<p>你可能会遇到，在使用 <code>margin</code> 的时候无法撑开元素高度，这是因为发生了所谓的 <a
+        href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing"
+        rel="noopener noreferrer" target="_blank">外边距折叠</a><br>
+    <strong>块级元素的上外边距和下外边距有时会合并（或折叠）为一个外边距，其大小取其中的最大者，这种行为称为外边距折叠</strong><br>
+    我们只要在父元素上触发 BFC特性（<a
+        href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context#%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%A1%8C%E9%99%B7"
+        rel="noopener noreferrer" target="_blank">Block Formatting Context，块格式化上下文</a>）即可解决这个问题。</p>
+<p>Ps: <a href="https://www.zhangxinxu.com/wordpress/2015/02/css-deep-understand-flow-bfc-column-two-auto-layout/"
+        rel="noopener noreferrer" target="_blank">CSS深入理解流体特性和BFC特性下多栏自适应布局</a>。我们也可以直接使用 <code>padding-top</code> 来替换
+    <code>margin-top</code> 来实现同等效果，这样也没有外边距折叠问题了。</p>
+<h4>Demo</h4>
+<div class="cp_embed_wrapper"><iframe name="cp_embed_2"
+        src="https://codepen.io/hoythan/embed/EzdXxB?height=400&amp;theme-id=light&amp;slug-hash=EzdXxB&amp;default-tab=html%2Cresult&amp;animations=run&amp;editable=&amp;embed-version=2&amp;user=hoythan&amp;name=cp_embed_2"
+        scrolling="no" frameborder="0" height="400" allowtransparency="true" allowfullscreen="true"
+        allowpaymentrequest="true" title="CodePen Embed" class="cp_embed_iframe "
+        style="width: 100%; overflow:hidden; display:block;" id="cp_embed_EzdXxB"></iframe></div>
+<script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
+<h2>已知高度</h2>
+<p>已知高度的情况在 Web 页面设计中非常常见，例如在需要横向无限滚动的页面设计，需要窗口高度占据屏幕的 100%，宽度永远是一个正方形。或对于高度不确定(%)但需要宽度永远保持一定比例的时候。</p>
+<h4>Demo</h4>
+<video width="1280" height="344" controls preload="metadata" src="https://doofox.cn/wp-content/uploads/2019/05/2019053003524549813814237.mp4?_=1" style="outline: none;width: 100%; height: 185.4375px;">
+</video>
+<p>上面提到<strong>margin 和 padding 的 top 以及 bottom 是以包含当前元素的宽度为基准进行计算</strong>，但是似乎没有 CSS 属性可以以高度为基准进行计算（<a
+        onclick="alert('不提供反驳机会')">反驳点此</a>）。</p>
+<h2>writing-mode</h2>
+<p>那么我唯一能想到的 CSS 属性就是 <code>writing-mode</code>，<code>writing-mode</code> 大部分人都很陌生，寻常的网页开发基本看不见它。虽然它是一个非常古老的属性，在 IE7
+    时代就出现了，但它在很久以后才被各个浏览器厂商所支持。不过当你看到这篇文章的时候，你已经不需要过多考虑它的兼容性问题了。虽然它的实际效果可能会和你想要的不太一样<a href="#bug">#注意事项</a></p>
+<h4>浏览器支持</h4>
+<p><img src="https://doofox.cn/wp-content/uploads/2019/05/2019053004434433033086999.jpg" alt="" width="1600"
+        height="868" class="aligncenter size-full wp-image-69"></p>
+<p>它的目的是为了实现垂直文字效果，如中文或日文，然而有趣的是，当我们把它放在其他用途时，它的作用将会被无限放大。因为 <code>writing-mode</code> 是一个非常神奇的属性，它能够改写 CSS
+    的流规则，例如让横向属性一转身变成纵向属性，你只要记得这个规则就能理解为什么我可以用<strong>已知高度(%)</strong>来实现自适应宽度了。<br>
+    关于这个属性，这里有对其非常详尽的描述 <a href="https://www.zhangxinxu.com/wordpress/2016/04/css-writing-mode/"
+        rel="noopener noreferrer" target="_blank">改变CSS世界纵横规则的writing-mode属性</a>。</p>
+<p><code>writing-mode</code>为什么能实现（横向属性一转身变成纵向属性），其实核心在于它能够通过修改 CSS 逻辑方向来实现修改指定块的流动方向。</p>
+<div style="margin:0 14em;text-align: center;">
+    <img src="https://doofox.cn/wp-content/uploads/2019/05/2019053005482557429611096.png" alt="" width="211"
+        height="202" class="aligncenter size-full wp-image-70">
+</div>
+<p>我们给原来的 <code>.avatar</code> 外包裹一层 <code>div</code> ，并赋予属性
+    <code>writing-mode: vertical-rl;</code>，就会改变内部元素属性的流方向为垂直靠右（rl:right-left,从右到左）。当元素的逻辑方向被改变时<code>padding-top</code>
+    的逻辑方向实际上变成了 <code>padding-right</code>，bottom 变成了 left。</p>
+<h4>Demo</h4>
+<div class="cp_embed_wrapper"><iframe name="cp_embed_3"
+        src="https://codepen.io/hoythan/embed/XwxYyy?height=400&amp;theme-id=light&amp;slug-hash=XwxYyy&amp;default-tab=html%2Cresult&amp;animations=run&amp;editable=&amp;embed-version=2&amp;user=hoythan&amp;name=cp_embed_3"
+        scrolling="no" frameborder="0" height="400" allowtransparency="true" allowfullscreen="true"
+        allowpaymentrequest="true" title="CodePen Embed" class="cp_embed_iframe "
+        style="width: 100%; overflow:hidden; display:block;" id="cp_embed_XwxYyy"></iframe></div>
+<script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
+<p></p>
+<h4 id="bug" style="color:red;">注意事项</h4>
+<p>在 Chrome 浏览器中，当我们改变窗体高度的时候，这个正方形大小不会按照我们预计的情况进行自适应调整，只有在调整宽度时候才会触发。不过在 Safari 中则不会有此问题。</p>
+<h2>逻辑属性</h2>
+<p>所谓CSS逻辑属性，指的是<code>*-start</code>、<code>*-end</code>以及<code>*-inline-start</code>、<code>*-inline-end</code>、<code>*-block-start</code>、<code>*-block-start</code>这类CSS属性，其元素最终的渲染方式是有逻辑性的，而
+    书写模式（writing-mode） 则用来调整这些逻辑属性的流顺序。</p>
+<p>在 2017 年 W3C CSS 组推出的 <a href="https://www.w3.org/TR/2017/WD-css-logical-1-20170518/" rel="noopener noreferrer"
+        target="_blank">CSS Logical Properties and Values Level 1</a> – CSS
+    逻辑属性与值的草案中，详细描述了不同的书写模式（writing-mode）中，可以抽取出共性的抽象概念。这些逻辑抽象概念需要在不同书写模式下映射到左或右、上或下等物理的概念上。</p>
+<h2>技术说明</h2>
+<p>
+    <a href="https://24ways.org/2016/css-writing-modes/" rel="noopener noreferrer" target="_blank">CSS Writing
+        Modes</a><br>
+    <a href="https://www.w3.org/TR/css-writing-modes-3/" rel="noopener noreferrer" target="_blank">CSS Writing Modes
+        Level 3</a><br>
+    <a href="https://www.youtube.com/watch?v=tTV60oAk6Cs" rel="noopener noreferrer" target="_blank">A Chinese typography
+        experiment (Speaker: Chen Hui Jing) – Talk.CSS</a>
+</p>

@@ -1,6 +1,6 @@
 ---
 title: Phoenix 二级索引探究
-tags: 云计算
+tags: [云计算]
 categories: 云计算
 date: 2019-03-04
 comments: true

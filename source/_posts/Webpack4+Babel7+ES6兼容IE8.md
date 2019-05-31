@@ -1,6 +1,6 @@
 ---
 title: Webpack4+Babel7+ES6兼容IE8
-tags: webpack、babel、es6、ie8
+tags: [webpack,babel,es6,ie8]
 categories: 前端
 date: 2019-04-03
 comments: true
